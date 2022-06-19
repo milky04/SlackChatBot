@@ -54,6 +54,9 @@ def nlp(input_message):
     # 生成文に'私:'が含まれていた場合それ以降の文字列を除去
     slice_potsition = edited_text.find('私:')
     edited_text = edited_text[:slice_potsition]
+    # 生成文に'<unk>'が含まれていた場合それ以降の文字列を除去
+    slice_potsition = edited_text.find('<unk>')
+    edited_text = edited_text[:slice_potsition]
 
     # 生成された文章を返す
     return edited_text
