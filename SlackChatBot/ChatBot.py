@@ -5,20 +5,19 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 # 正規表現
 import re
 # rinna株式会社日本語版GPT-2事前学習モデル
-import RinnaJapaneseGPT2
-# rinnaを変数に格納
-rinna = RinnaJapaneseGPT2
+import RinnaJapaneseGPT2 as rinna
 
-# トークン
+# Bot User OAuth Token
 SLACK_BOT_TOKEN = "Bot User OAuth Tokenを記述"
+# Socket Mode のToken
 SLACK_APP_TOKEN = "Socket Mode のTokenを記述"
 
 # botを動かすチャンネルのID
 CHANNEL_ID = "botを動かすチャンネルIDを記述"
-# チャンネルIDを変数に格納
+# チャンネルIDをchannelに格納
 channel=CHANNEL_ID
 
-# トークンを変数に格納
+# トークンをtokenに格納
 token = WebClient(SLACK_BOT_TOKEN)
 
 # ログイン時にメッセージを送信する処理
