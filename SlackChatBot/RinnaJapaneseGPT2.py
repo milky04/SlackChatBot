@@ -1,4 +1,4 @@
-# ransformerライブラリを介してrinna株式会社日本語版GPT-2事前学習モデルを呼び出し
+# Transformerライブラリを介してrinna株式会社日本語版GPT-2事前学習モデルを呼び出し
 from transformers import T5Tokenizer, AutoModelForCausalLM
 
 # rinna株式会社日本語版GPT-2事前学習モデル
