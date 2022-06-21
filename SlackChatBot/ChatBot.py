@@ -6,8 +6,11 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 import re
 #処理の状態管理
 from ProcessPool import ProcessPool
-# rinna株式会社日本語版GPT-2事前学習モデル
-import RinnaJapaneseGPT2 as rinna
+# # rinna株式会社日本語版GPT-2事前学習モデル
+# import RinnaJapaneseGPT2 as rinna
+
+# rinna株式会社日本語特化GPT言語モデル
+import RinnaJapaneseGPT1b as rinna
 
 # Bot User OAuth Token
 SLACK_BOT_TOKEN = "Bot User OAuth Tokenを記述"
