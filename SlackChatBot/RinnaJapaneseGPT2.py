@@ -50,7 +50,7 @@ def nlp(input_message):
     total_text = (text[input_ids_length:])
 
     # 生成文にpatternにある文字列が含まれていた場合それ以降の文字列を除去。含まれていなかった場合はそのまま出力
-    pattern = r"AI:|私:|俺:|僕:|あなた:|<unk>|:"
+    pattern = r"AI:|私:|俺:|僕:|あなた:|<unk>"
     if re.search(pattern, total_text) != None:
         # 文章中のpatternにある文字列の位置を全て抽出
         match_position = [match.span() for match in re.finditer(pattern, total_text)]
