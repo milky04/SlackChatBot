@@ -1,5 +1,7 @@
 # Transformerライブラリを介してrinna株式会社日本語版GPT-2事前学習モデルを呼び出し
 from transformers import T5Tokenizer, AutoModelForCausalLM
+# 正規表現
+import re
 
 # rinna株式会社日本語版GPT-2事前学習モデル
 model_name = 'rinna/japanese-gpt2-medium'
@@ -48,15 +50,17 @@ def nlp(input_message):
     # デコードされた文章から最初に与えた入力文を除去
     total_text = (text[input_ids_length:])
 
-    # 生成文に'AI:'が含まれていた場合それ以降の文字列を除去
-    slice_potsition = total_text.find('AI:')
-    edited_text = total_text[:slice_potsition]
-    # 生成文に'私:'が含まれていた場合それ以降の文字列を除去
-    slice_potsition = edited_text.find('私:')
-    edited_text = edited_text[:slice_potsition]
-    # 生成文に'<unk>'が含まれていた場合それ以降の文字列を除去
-    slice_potsition = edited_text.find('<unk>')
-    edited_text = edited_text[:slice_potsition]
-
-    # 生成された文章を返す
-    return edited_text
+    # 生成文にpatternにある文字列が含まれていた場合それ以降の文字列を除去。含まれていなかった場合はそのまま出力
+    pattern = r"AI:|私:|俺:|僕:|あなた:|<unk>|:"
+    if re.search(pattern, total_text) != None:
+        # 文章中のpatternにある文字列の位置を全て抽出
+        match_position = [match.span() for match in re.finditer(pattern, total_text)]
+        # 一番最初に出現したpatternにある文字列の位置を抽出
+        first_match_position = match_position[0][0]
+        #  一番最初に出現したpatternにある文字列以降の文字列を除去
+        edited_text = total_text[:first_match_position]
+        # 生成された文章を返す
+        return edited_text
+    else:
+        # 生成された文章を返す
+        return total_text
