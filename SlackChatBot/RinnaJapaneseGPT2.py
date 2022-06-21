@@ -19,6 +19,7 @@ def nlp(input_message):
         "私: " + input_message + "\nAI: ",
         return_tensors="pt"
     )
+    
     # generate関数で文章生成
     output_sequences = model.generate(
         # エンコードしたメッセージ
@@ -29,14 +30,15 @@ def nlp(input_message):
         temperature=0.9,
         # 確率の高い上位k個の候補の単語からランダムに選択
         top_k=0,
-        # 確率の合計がpを超えるような最小個数の候補を動的に選択(1>p>=0)
+        # 確率の高い上位候補の単語の確率の合計がpを超えるような最小個数の候補を動的に選択(1>p>=0)
         top_p=0.9,
         # 1に近づけると同じ文章の繰り返しを減少する効果
         repetition_penalty=1.0,
         # num_return_sequencesを複数回指定する場合Trueにする
         do_sample=True,
         # 一度の実行で生成する文章の数を指定
-        num_return_sequences=1)
+        num_return_sequences=1
+    )
 
     # トークンの状態の生成文章が二次元リストで格納されているので二次元リスト0番目のリストを取得
     output_sequence = output_sequences.tolist()[0]
