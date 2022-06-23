@@ -1,9 +1,9 @@
-# Transformerライブラリを介してrinna株式会社日本語版GPT-2事前学習モデルを呼び出し
+# Transformerライブラリを介してrinna株式会社日本語特化GPT言語モデルを呼び出し
 from transformers import T5Tokenizer, AutoModelForCausalLM
 # 正規表現
 import re
 
-# rinna株式会社日本語版GPT-2事前学習モデル
+# rinna株式会社日本語特化GPT言語モデル(パラメータ数3.3億)
 model_name = 'rinna/japanese-gpt2-medium'
 # tokenizerとmodelの生成
 # tokenizerで文字列をトークンにエンコード/デコード
