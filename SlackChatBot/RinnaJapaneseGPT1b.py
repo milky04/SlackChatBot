@@ -5,7 +5,7 @@ import re
 # テンソルとモデルのGPU/CPUを指定・切り替え
 import torch
 
-# rinna株式会社日本語特化GPT言語モデル
+# rinna株式会社日本語特化GPT言語モデル(パラメータ数13億)
 model_name = 'rinna/japanese-gpt-1b'
 # tokenizerとmodelの生成
 # tokenizerで文字列をトークンにエンコード/デコード
