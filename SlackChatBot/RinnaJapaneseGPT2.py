@@ -17,6 +17,8 @@ def nlp(input_message):
     # 発言者(ユーザーとAI)を区別することで対話文と認識させる
     input_ids = tokenizer.encode(
         "私: " + input_message + "\nAI: ",
+        # スペシャルトークンの自動追加を無効(自分で追加するため)
+        add_special_tokens=False,
         # PyTorchのテンソル型で返す(Transformerモデルの入力でテンソル形式に変換する必要があるため)
         # 機械学習におけるテンソルは多次元配列とほぼ同義(=行列。GPUとテンソルの計算の相性が良い)
         return_tensors="pt"
