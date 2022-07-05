@@ -81,7 +81,6 @@ def nlp(input_message):
         # 余分に生成されたスペースを削除
         clean_up_tokenization_spaces=True
         )
-
     # 最初に与えた入力文の長さを取得
     input_ids_length = len(tokenizer.decode(
         input_ids[0],
